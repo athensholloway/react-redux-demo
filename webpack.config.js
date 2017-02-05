@@ -3,18 +3,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTemplate = require('html-webpack-template');
 
 module.exports = {
-  entry: './index.js',
+  entry: './index.jsx',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
-       loaders: [
-         {enforce: "pre", test: /\.js$/,  loader: "eslint-loader", exclude: /node_modules/},
-         {test: /.jsx?$/, exclude: /node_modules/, loader: 'babel-loader', query: {presets: ['es2015', 'react']}}
-       ]
-   },
-   plugins: [
+    loaders: [
+         { enforce: 'pre', test: /\.jsx?$/, loader: 'eslint-loader', exclude: /node_modules/ },
+         { test: /.jsx?$/, exclude: /node_modules/, loader: 'babel-loader', query: { presets: ['es2015', 'react'] } },
+    ],
+  },
+  plugins: [
     new HtmlWebpackPlugin({
       template: HtmlWebpackTemplate,
       title: 'React Redux Demo',
@@ -23,4 +23,7 @@ module.exports = {
       inject: false, // html-webpack-template requires this to work
     }),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 };

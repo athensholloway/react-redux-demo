@@ -1,3 +1,10 @@
 {
-  "extends": "airbnb"
+  "extends": "airbnb",
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    // disable rules from base configurations
+    "no-console": "off",
+    },
 }

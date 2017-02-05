@@ -10,16 +10,16 @@ import SignInContainer from './containers/signInContainer';
 
 const App = () => (<div>{<SignInContainer />}</div>);
 
-let store = createStore(
+const store = createStore(
   signInReducer,
   applyMiddleware(
       thunkMiddleware, // lets us dispatch() functions
-      createLogger() // neat middleware that logs actions
-    )
+      createLogger(), // neat middleware that logs actions
+    ),
   );
 
 render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root'))
+  document.getElementById('root'));

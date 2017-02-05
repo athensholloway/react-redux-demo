@@ -1,21 +1,25 @@
-import { SIGNING_IN, SIGN_IN_SUCCESSFUL, SIGN_IN_FAILED, REMEMBER_USER } from '../actions/signInActions'
+import { SIGNING_IN, SIGN_IN_SUCCESSFUL, SIGN_IN_FAILED, REMEMBER_USER } from '../actions/signInActions';
 
-const signInReducer = (state = {rememberUser: false, signInError: '', user: null, signedIn: false, signingIn: false}, action) => {
+const signInReducer = (state = { rememberUser: false, signInError: '', user: null, signedIn: false, signingIn: false }, action) => {
   if (action.type === SIGNING_IN) {
-    return Object.assign({}, state, {signingIn: true});
+    const newState = { signingIn: true };
+    return Object.assign({}, state, newState);
   }
   if (action.type === SIGN_IN_SUCCESSFUL) {
-    return Object.assign({}, state, {signingIn: false, signedIn: true, user: action.user});
+    const newState = { signingIn: false, signedIn: true, user: action.user };
+    return Object.assign({}, state, newState);
   }
   if (action.type === SIGN_IN_FAILED) {
-    return Object.assign({}, state, {signingIn: false, signedIn: false, user: null, signInError: action.error});
+    const newState = { signingIn: false, signedIn: false, user: null, signInError: action.error };
+    return Object.assign({}, state, newState);
   }
 
   if (action.type === REMEMBER_USER) {
-    return Object.assign({}, state, {rememberUser: !state.rememberUser});
+    const newState = { rememberUser: !state.rememberUser };
+    return Object.assign({}, state, newState);
   }
 
   return state;
 };
 
-export default signInReducer
+export default signInReducer;
