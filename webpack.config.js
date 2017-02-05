@@ -9,14 +9,10 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   module: {
-       loaders: [{
-           test: /.jsx?$/,
-           exclude: /node_modules/,
-           loader: 'babel-loader',
-           query: {
-             presets: ['es2015', 'react']
-           }
-       }]
+       loaders: [
+         {enforce: "pre", test: /\.js$/,  loader: "eslint-loader", exclude: /node_modules/},
+         {test: /.jsx?$/, exclude: /node_modules/, loader: 'babel-loader', query: {presets: ['es2015', 'react']}}
+       ]
    },
    plugins: [
     new HtmlWebpackPlugin({
