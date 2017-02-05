@@ -1,8 +1,7 @@
 # React & Redux Demo
 
 ### To build the app
-`npm run build`
-open `/dist/index.html`
+`npm run build` and open `/dist/index.html`
 
 #### Install Webpack & Babel
 npm install babel-loader babel-core babel-preset-es2015 \
